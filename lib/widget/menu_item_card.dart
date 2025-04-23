@@ -66,8 +66,7 @@ class MenuItemCard extends StatelessWidget {
                         '${item.price.toStringAsFixed(2)} €',
                         style: TextStyle(
                           fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold
                         ),
                       ),
                     ],
