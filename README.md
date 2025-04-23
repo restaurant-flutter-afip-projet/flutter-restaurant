@@ -26,7 +26,7 @@ lib/
 ```
 
 ### Détail d'une feature (exemple: Booking)
-Chaque **feature** est organisée de façon à séparer la logique de présentation, d'accès aux données, et de métier :
+Chaque **feature** est organisée de façon à séparer la logique de présentation, d'accès aux données, et de métierq :
 ```plaintext
 features/
     booking/
