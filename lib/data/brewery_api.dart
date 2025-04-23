@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:restaurant/model/brewery_items.dart';
 
 import '../constants/api_links.dart';
+import '../model/brewery_items.dart';
 
 class BreweryApi {
   static Future<List<Brewery>> fetchBreweries() async {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant/screen/brewery_screen/brewery_details_screen.dart';
 import '../../data/brewery_api.dart';
 import '../../model/brewery_items.dart';
+import 'brewery_details_screen.dart';
 
 class BreweryScreen extends StatefulWidget {
   const BreweryScreen({super.key});

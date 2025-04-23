@@ -1,4 +1,5 @@
-import 'package:restaurant/model/menu_item.dart';
+
+import '../model/menu_item.dart';
 
 List<MenuItem> menuItems = [
   MenuItem(

@@ -1,6 +1,5 @@
+import 'package:cydrerie/screen/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:restaurant/screen/home_screen/home_screen.dart';
-import 'screen/menu_screen/menu_screen.dart';
 
 void main() {
   runApp(const MyApp());
