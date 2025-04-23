@@ -1,8 +1,13 @@
-from fastapi import APIRouter
-from app.schemas.reservation import ReservationCreate
+from pydantic import BaseModel, conint
+from datetime import datetime
 
-router = APIRouter()
 
-@router.post("/reservations")
-def create_reservation(reservation: ReservationCreate):
-    return {"message": "Reservation created", "reservation": reservation}
+class Reservation(BaseModel):
+    id : int
+    userId : int
+    tableId : int
+    datetime: datetime
+    peopleNbr: conint(ge=0,le=100)
+
+    class Config:
+        orm_mode = True

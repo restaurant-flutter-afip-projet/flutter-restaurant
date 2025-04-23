@@ -1,8 +1,13 @@
-from fastapi import APIRouter
-from app.schemas.menu import Dish
+from pydantic import BaseModel, constr,confloat
 
-router = APIRouter()
+class Dish(BaseModel):
+    id: int
+    name: constr(min_length=1, max_length=100)
+    description: constr(min_length=1, max_length=300)
+    price: confloat(ge=0.0,le=1000.0)
+    img_url: constr(min_length=1, max_length=300)
 
-@router.get("/menu", response_model=list[Dish])
-def get_menu():
-    return [{"id": 1, "name": "Pizza Margherita", "price": 9.99}]
+    class Config:
+        orm_mode = True
+
+

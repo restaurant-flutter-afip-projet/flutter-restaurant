@@ -1,8 +1,10 @@
-from fastapi import APIRouter
-from app.schemas.menu import Dish
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from backend.db.base import Base
 
-router = APIRouter()
+class Dish(Base):
+    __tablename__ = "dishes"
 
-@router.get("/menu", response_model=list[Dish])
-def get_menu():
-    return [{"id": 1, "name": "Pizza Margherita", "price": 9.99}]
+    id = Column(Integer, primary_key=True, index=True)
+    userId = Column(Integer, ForeignKey("users.id"), nullable=False)
+    price = Column(Float(1000.0), nullable=False)
+    img_url = Column(String(300), nullable=False)
