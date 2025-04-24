@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../model/menu_item.dart';
+import '../features/menu/menu_model.dart';
 
 class MenuItemCard extends StatelessWidget {
   final MenuItem item;

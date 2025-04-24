@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../model/menu_item.dart';
+import '../features/menu/menu_model.dart';
 import 'menu_item_card.dart';
 
 
