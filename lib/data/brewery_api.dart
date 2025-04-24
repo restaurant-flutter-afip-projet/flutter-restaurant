@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../constants/api_links.dart';
+import '../core/constants/api_links.dart';
 import '../model/brewery_items.dart';
 
 class BreweryApi {

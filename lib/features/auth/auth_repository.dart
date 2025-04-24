@@ -1,0 +1,1 @@
+/* Fait les appels HTTP à FastAPI (login, register, refresh, etc.)*/
