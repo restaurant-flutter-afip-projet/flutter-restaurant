@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../features/menu/menu_screen.dart';
+import '../../features/auth/auth_screen.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -39,8 +40,9 @@ class LandingScreen extends StatelessWidget {
                       // Bouton profil
                       GestureDetector(
                         onTap: () {
-                          // TODO CREER UN ROUTEUR SPECIFIQUE
-                          Navigator.pushNamed(context, '/login');
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => LoginScreen(onToggleTheme: onToggleTheme))
+                          );
                         },
                         child: CircleAvatar(
                           backgroundColor: Colors.white,
