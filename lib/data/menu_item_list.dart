@@ -1,5 +1,5 @@
 
-import '../model/menu_item.dart';
+import '../features/menu/menu_model.dart';
 
 List<MenuItem> menuItems = [
   MenuItem(
