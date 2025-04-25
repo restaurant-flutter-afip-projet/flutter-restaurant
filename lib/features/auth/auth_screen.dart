@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: MediaQuery.of(context).size.width * 0.85,
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5), // semi-transparent noir
+                    color: Color.fromARGB(128, 0, 0, 0), // semi-transparent noir
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: SingleChildScrollView(
