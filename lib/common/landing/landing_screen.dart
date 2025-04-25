@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../features/menu/menu_screen.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
 
+  get onToggleTheme => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // On enlève l'appBar pour un effet "full screen"
+      // Pas d'app bar pour du full screen
       body: Stack(
         children: [
-          // Image de fond (mets ici l'asset ou une image réseau)
+          // Image de fond
           Positioned.fill(
             child: Image.network(
               'https://img.freepik.com/photos-gratuite/hamburger-poulet-maison-du-champagne-frites-laitue-tomate-oignon-planche-bois_1150-1857.jpg?t=st=1745566059~exp=1745569659~hmac=f681e9716e7572621d44a447b1e2ac992f7b173a954d62d63168808ded42984b&w=740',
@@ -21,7 +26,6 @@ class LandingScreen extends StatelessWidget {
               errorBuilder: (context, error, stackTrace) => Center(child: Icon(Icons.error)),
             ),
           ),
-          // Overlay sombre pour lisibilité
           // Contenu principal
           SafeArea(
             child: Column(
@@ -35,7 +39,7 @@ class LandingScreen extends StatelessWidget {
                       // Bouton profil
                       GestureDetector(
                         onTap: () {
-                          // Navigue vers la page login/register
+                          // TODO CREER UN ROUTEUR SPECIFIQUE
                           Navigator.pushNamed(context, '/login');
                         },
                         child: CircleAvatar(
@@ -57,15 +61,13 @@ class LandingScreen extends StatelessWidget {
                 Center(
                   child: Column(
                     children: [
-                      // Remplace par ton logo si besoin
                       Text(
-                        'MonRestau',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2,
-                        ),
+                        'La Cydrerie',
+                        style: GoogleFonts.lato(
+                          textStyle: Theme.of(context).textTheme.displayLarge,
+                          fontSize: 48,
+                          color: Colors.white
+                        )
                       ),
                       SizedBox(height: 24),
                       // CTA Button
@@ -78,7 +80,9 @@ class LandingScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/menu');
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => MenuScreen(onToggleTheme: onToggleTheme))
+                          );
                         },
                         child: Text(
                           'Découvrir le menu',
