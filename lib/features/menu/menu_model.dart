@@ -1,5 +1,5 @@
 class MenuItem {
-  final int? id;
+  final int id;
   final String name;
   final String description;
   final double price;
@@ -16,6 +16,8 @@ class MenuItem {
     required this.imgUrl,
     required this.category,
   });
+
+  /* Déclaration d'une factory méthode = on ne construit pas l'objet en suivant sa définition de constructueur mais en faisaint un mapping de chaque paire clé valeur que l'objet contient */
 
   factory MenuItem.fromJson(Map<String, dynamic> json) {
     return MenuItem(
