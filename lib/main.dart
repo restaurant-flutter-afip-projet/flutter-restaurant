@@ -1,4 +1,4 @@
-import 'package:cydrerie/screen/home_screen/home_screen.dart';
+import 'package:cydrerie/common/landing/landing_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: _themeMode, // Dynamique !
-      home: HomeScreen(onToggleTheme: _toggleTheme),
+      home: LandingScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
