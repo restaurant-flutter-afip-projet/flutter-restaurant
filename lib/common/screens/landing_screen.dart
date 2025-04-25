@@ -4,9 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../features/menu/menu_screen.dart';
 
 class LandingScreen extends StatelessWidget {
-  const LandingScreen({super.key});
+  const LandingScreen({super.key, required this.onToggleTheme});
+  final VoidCallback onToggleTheme;
 
-  get onToggleTheme => null;
+
 
   @override
   Widget build(BuildContext context) {
