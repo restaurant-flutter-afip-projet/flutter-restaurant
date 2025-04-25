@@ -32,7 +32,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Menu du Restaurant'),
+        title: Text('Menu du Restaurant'),
         actions: [
           IconButton(
             onPressed: widget.onToggleTheme,
@@ -53,7 +53,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 final category = categories[index];
                 final isSelected = category == selectedCategory;
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                  padding: EdgeInsets.symmetric(horizontal: 6.0),
                   child: ChoiceChip(
                     label: Text(category),
                     selected: isSelected,

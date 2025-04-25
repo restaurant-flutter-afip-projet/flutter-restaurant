@@ -3,10 +3,9 @@ class ApiConstants {
 
 
   static const String baseRequestURL = "http://localhost:8000/api";
-
-
-
-  static const String menuItems = "/menu";
+  static const String menuEndpoint = "/menu";
+  static const String getItems = "/all";
+  static const String deleteItem = "/delete";
 }
 
 

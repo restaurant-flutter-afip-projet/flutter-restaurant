@@ -49,7 +49,7 @@ class MenuItemCard extends StatelessWidget {
         children: [
           // Image du plat
           ClipRRect(
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               topLeft: Radius.circular(12.0),
               topRight: Radius.circular(12.0),
             ),
@@ -74,7 +74,7 @@ class MenuItemCard extends StatelessWidget {
           ),
           // Informations sur le plat
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

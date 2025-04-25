@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:cydrerie/core/constants/error_messages.dart';
 import 'package:cydrerie/core/exception/api.dart';
 import 'package:http/http.dart' as http;
+import '../../core/constants/success_messages.dart';
 import 'menu_model.dart';
 
 import '../../core/constants/api_links.dart';
@@ -33,16 +34,20 @@ import '../../core/constants/api_links.dart';
 */
 abstract class MenuRepository {
   Future<List<MenuItem>> fetchMenuItems();
-  // Future<void> deleteMenuItems();
+  Future<String> deleteMenuItems(int id);
   // Future<MenuItem> updateMenuItem();
   // Future<MenuItem> createMenuItem();
 }
 
 class MenuRepositoryImpl implements MenuRepository {
-  final String fetchMenuItemsURL = "${ApiConstants.baseRequestURL}/${ApiConstants.menuItems}" ;
-  
+
   @override
   Future<List<MenuItem>> fetchMenuItems() async {
+    final String fetchMenuItemsURL = ""
+        "${ApiConstants.baseRequestURL}"
+        "${ApiConstants.menuEndpoint}"
+        "${ApiConstants.getItems}" ;
+
     final res = await http.get(Uri.parse(fetchMenuItemsURL));
 
     if (res.statusCode == 200) {
@@ -55,21 +60,56 @@ class MenuRepositoryImpl implements MenuRepository {
         throw ApiException(ErrorMessages.unauthorized, code: 401);
       case 404 :
         throw ApiException(ErrorMessages.menuNotFound, code: 404);
+      case 500:
+        throw ApiException(ErrorMessages.serverError, code: 500);
       default:
         throw ApiException(ErrorMessages.genericApi, code: res.statusCode);
     }
   }
 
-  // @override
-  // Future<void> deleteMenuItems() async {
-  // }
+  @override
+  Future<String> deleteMenuItems(int id) async {
+    final String deleteMenuItemUrl =
+        "${ApiConstants.baseRequestURL}"
+        "${ApiConstants.menuEndpoint}"
+        "${ApiConstants.deleteItem}/"
+        "$id";
+
+    final res = await http.delete(Uri.parse(deleteMenuItemUrl));
+
+    if (res.statusCode == 200 || res.statusCode == 204) {
+      return SuccessMessages.menuDeleted;
+    }
+
+    switch (res.statusCode) {
+      case 401:
+        throw ApiException(ErrorMessages.unauthorized, code: 401);
+      case 404 :
+        throw ApiException(ErrorMessages.deleteMenuError, code: 404);
+      case 500:
+        throw ApiException(ErrorMessages.serverError, code: 500);
+      default:
+        throw ApiException(ErrorMessages.genericApi, code: res.statusCode);
+    }
+
+  }
   //
   // @override
   // Future<MenuItem> updateMenuItem() async {
   // }
   //
   // @override
-  // Future<MenuItem> createMenuItem() async {
+  // Future<MenuItem> createMenuItem(MenuItem : me) async {
+  //
+  //   final String createMenuItem =
+  //       "${ApiConstants.baseRequestURL}"
+  //       "${ApiConstants.menuEndpoint}"
+  //       "${ApiConstants.deleteItem}/"
+  //       "$id"
+  //
+  //
+  //   final res = await http.post(Uri.parse());
+  //
   // }
- 
+  //
 }
