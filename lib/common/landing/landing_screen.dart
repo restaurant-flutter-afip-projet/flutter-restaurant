@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../features/menu/menu_screen.dart';
 import '../../features/auth/auth_screen.dart';
+import '../../features/menu/menu_screen.dart';
+
 
 class LandingScreen extends StatelessWidget {
-  const LandingScreen({super.key});
-
-  get onToggleTheme => null;
+  const LandingScreen({super.key, required this.onToggleTheme});
+  final VoidCallback onToggleTheme;
 
   @override
   Widget build(BuildContext context) {

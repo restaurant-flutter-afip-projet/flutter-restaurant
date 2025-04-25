@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: _themeMode, // Dynamique !
-      home: LandingScreen(),
+      home: LandingScreen(onToggleTheme: _toggleTheme),
       debugShowCheckedModeBanner: false,
     );
   }
