@@ -1,5 +1,6 @@
-import 'package:cydrerie/common/landing/landing_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'common/screens/landing_screen.dart';
 
 void main() {
   runApp(const MyApp());

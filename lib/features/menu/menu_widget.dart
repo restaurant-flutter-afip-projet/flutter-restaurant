@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import './menu_model.dart';
 
-import 'package:flutter/cupertino.dart';
-
 
 
 class MenuSection extends StatelessWidget {
@@ -56,7 +54,7 @@ class MenuItemCard extends StatelessWidget {
               topRight: Radius.circular(12.0),
             ),
             child: Image.network(
-              item.image,
+              item.imgUrl,
               height: 150,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
@@ -85,7 +83,7 @@ class MenuItemCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        item.title,
+                        item.name,
                         style: const TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
