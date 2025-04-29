@@ -64,11 +64,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(height: 20),
                           Row(
                             children: [
-                              Container(
-                                height: 15,
-                                width: 15,
-                                color: Colors.white,
-                              ),
                               const SizedBox(width: 10),
                               const Expanded(
                                 child: Text(

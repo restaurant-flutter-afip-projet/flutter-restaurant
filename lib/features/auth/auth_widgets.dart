@@ -18,7 +18,7 @@ class AuthTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(fontWeight: FontWeight.w600)),
+        Text(label, style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.white)),
         Container(
           height: 35,
           decoration: const BoxDecoration(
