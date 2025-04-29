@@ -3,10 +3,16 @@ class ApiConstants {
 
 
   static const String baseRequestURL = "http://localhost:8000/api";
+
+  /* Convention Endpoints */
+
   static const String menuEndpoint = "/menu";
   static const String bookingEndpoint = "/booking";
   static const String tableEndpoint = "/table";
-  static const String getItems = "/all";
+  static const String userEndpoint = "/user";
+
+  /* Convention Crud*/
+  static const String getItems = "/fetch-all";
   static const String deleteItem = "/delete";
   static const String createItem = "/create";
   static const String updateItem = "/update";

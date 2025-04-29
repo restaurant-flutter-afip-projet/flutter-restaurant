@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:cydrerie/core/constants/error_messages.dart';
 import 'package:cydrerie/core/exception/api.dart';
+import 'package:cydrerie/features/menu/domain/repository/menu_repository.dart';
 import 'package:http/http.dart' as http;
 import '../../../../core/constants/success_messages.dart';
-import '../../domain/repository/menu_repository.dart';
 import '../model/menu_model.dart';
 
 import '../../../../core/constants/api_links.dart';
@@ -34,9 +34,7 @@ import '../../../../core/constants/api_links.dart';
 * - Séparation du quoi (classe abstraite) du comment (MenuRepositoryImpl)
 */
 
-
-
-class MenuRepositoryImpl implements MenuRepository {
+class MenuService implements MenuRepository {
   @override
   Future<List<MenuItem>> fetchMenuItems() async {
     final url = "${ApiConstants.baseRequestURL}${ApiConstants.menuEndpoint}${ApiConstants.getItems}";
@@ -44,7 +42,6 @@ class MenuRepositoryImpl implements MenuRepository {
     final res = await http.get(Uri.parse(url));
 
     final data = _handleResponse(res) as List;
-
 
     return data.map((item) => MenuItem.fromJson(item)).toList();
   }
