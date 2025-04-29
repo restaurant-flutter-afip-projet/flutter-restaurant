@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'auth_widgets.dart';
+import '../../features/register/register_screen.dart';
+import 'auth_widget.dart';
 
 class LoginScreen extends StatefulWidget {
-  final VoidCallback onToggleTheme;
   const LoginScreen({super.key, required this.onToggleTheme});
+  final VoidCallback onToggleTheme;
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -119,9 +120,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      // Action quand on clique sur REGISTER
-                                      print('inscrire cliqué');
-                                      // Exemple : Navigator.push(...)
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context) => RegisterScreen())
+                                      );
                                     },
                                 ),
                               ],
