@@ -2,15 +2,16 @@ import 'dart:convert';
 import 'package:cydrerie/core/constants/error_messages.dart';
 import 'package:cydrerie/core/exception/api.dart';
 import 'package:http/http.dart' as http;
-import '../../core/constants/success_messages.dart';
-import 'menu_model.dart';
+import '../../../../core/constants/success_messages.dart';
+import '../../domain/repository/menu_repository.dart';
+import '../model/menu_model.dart';
 
-import '../../core/constants/api_links.dart';
+import '../../../../core/constants/api_links.dart';
 
 
 /*
  * @Description :
- * - Le repository représente la couche d'abstraction de la source de données, c'est l'interface entre notre app et le backend d'Oscar
+ * - Le service représente la couche d'abstraction de la source de données, c'est l'interface entre notre app et le backend d'Oscar
  * - Il centralise toute la logique d'accès à ces dernières (API, cache ... )
  *
  * @Responsabilité :
@@ -27,20 +28,12 @@ import '../../core/constants/api_links.dart';
 
 /*
 * @Description
-* - Déclare les méthode de notre repository
+* - Déclare les méthode de notre service
 * - Ne peut être instancié directement
 * - Sert de contrat d'interface
 * - Séparation du quoi (classe abstraite) du comment (MenuRepositoryImpl)
 */
-abstract class MenuRepository {
-  Future<List<MenuItem>> fetchMenuItems();
 
-  Future<String> deleteMenuItems(int id);
-
-  Future<MenuItem> updateMenuItem(MenuItem menuItem);
-
-  Future<MenuItem> createMenuItem(MenuItem menuItem);
-}
 
 
 class MenuRepositoryImpl implements MenuRepository {

@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'register_widget.dart';
-import '../../common/screens/terms_of_use.dart';
+import '../widgets/register_user_widget.dart';
+import '../../../../common/screens/terms_of_use.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

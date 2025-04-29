@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../../features/register/register_screen.dart';
-import 'auth_widget.dart';
+import 'register_user_screen.dart';
+import '../widgets/login_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key, required this.onToggleTheme});

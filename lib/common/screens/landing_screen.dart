@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../features/auth/auth_screen.dart';
-import '../../features/menu/menu_screen.dart';
+import '../../features/auth/ui/screens/login_screen.dart';
+import '../../features/menu/ui/screens/menu_screen.dart';
 
 
 class LandingScreen extends StatelessWidget {

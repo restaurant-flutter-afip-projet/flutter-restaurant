@@ -28,7 +28,7 @@ C’est ici que sont faits les appels réseau, avec manipulation des données br
 
 Exemple:
 Récupérer la liste des bookings via HTTP.
-Ajouter un utilisateur en appelant ton backend FastAPI.
+Ajouter un utilisateur en appelant le backend FastAPI.
 ```
 
 **_service**
