@@ -4,6 +4,7 @@
 ```plaintext
 But:
 Définir les classes/modèles de données utilisés dans la feature (Booking, Menu, Table, User).
+Correspond aussi à ce que l'on appelle les DTO(data-transfer-object)
 
 Exemples:
 Classe Booking avec id, date, userId, tableId, etc.

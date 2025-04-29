@@ -48,7 +48,7 @@ class LandingScreen extends StatelessWidget {
                           backgroundColor: Colors.white,
                           child: Icon(
                               Icons.person,
-                              color: Colors.orange.shade700,
+                              color: Colors.brown.shade500,
                           ),
                         ),
                       ),
@@ -71,11 +71,11 @@ class LandingScreen extends StatelessWidget {
                           color: Colors.white
                         )
                       ),
-                      SizedBox(height: 24),
+                      SizedBox(height: 34),
                       // CTA Button
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange.shade700,
+                          backgroundColor: Colors.brown.shade700,
                           padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100),

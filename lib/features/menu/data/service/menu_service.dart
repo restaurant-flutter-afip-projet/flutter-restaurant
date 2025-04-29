@@ -62,7 +62,7 @@ class MenuService implements MenuRepository {
     final res = await http.patch(
       Uri.parse(url),
       headers: _headers,
-      body: jsonEncode(menuItem.convertToJson()),
+      body: jsonEncode(menuItem.toJson()),
     );
 
     final data = _handleResponse(res);
@@ -76,7 +76,7 @@ class MenuService implements MenuRepository {
     final res = await http.post(
           Uri.parse(url),
       headers: _headers,
-      body: jsonEncode(menuItem.convertToJson()),
+      body: jsonEncode(menuItem.toJson()),
     );
 
     final data = _handleResponse(res);

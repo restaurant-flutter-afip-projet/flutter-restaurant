@@ -10,6 +10,7 @@ class ApiConstants {
   static const String bookingEndpoint = "/booking";
   static const String tableEndpoint = "/table";
   static const String userEndpoint = "/user";
+  static const String menuDetailEndpoint = "/detail";
 
   /* Convention Crud*/
   static const String getItems = "/fetch-all";
