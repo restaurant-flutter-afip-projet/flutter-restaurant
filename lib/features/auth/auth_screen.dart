@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'auth_widgets.dart';
 
@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (errorMsg != null) ErrorBanner(message: errorMsg!),
                           const SizedBox(height: 20),
                           const Text(
-                            "Login",
+                            "Connexion",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
@@ -57,42 +57,74 @@ class _LoginScreenState extends State<LoginScreen> {
                           const AuthTextField(label: "Email", icon: Icons.mail),
                           const SizedBox(height: 20),
                           const AuthTextField(
-                            label: "Password",
+                            label: "Mot de passe",
                             icon: Icons.lock,
                             obscureText: true,
                           ),
                           const SizedBox(height: 20),
                           Row(
                             children: [
-                              const SizedBox(width: 10),
-                              const Expanded(
-                                child: Text(
-                                  "Remember Me, FORGET PASSWORD",
-                                  style: TextStyle(
+                              RichText(
+                                text: TextSpan(
+                                  style: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white,
                                   ),
+                                  children: [
+                                    TextSpan(
+                                      text: 'MOT DE PASSE OUBLIÉ',
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          // Action quand on clique sur Forget
+                                          print('mot de passe oublié cliqué');
+                                          // Exemple : Navigator.push(...)
+                                        },
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
                           ),
                           const SizedBox(height: 20),
                           AuthButton(
-                            text: "Log In",
+                            text: "Se Connecter",
                             onPressed: () {
                               setState(() {
-                                errorMsg = "Invalid email or password.";
+                                errorMsg = "Email ou mot de passe invalide.";
                               });
                             },
                           ),
                           const SizedBox(height: 20),
-                          const Text(
-                            "Don't have an account? REGISTER",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
+                          RichText(
+                            text: TextSpan(
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                              children: [
+                                const TextSpan(text: "Vous n'avez pas de compte ? "),
+                                TextSpan(
+                                  text: 'S\'INSCRIRE',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      // Action quand on clique sur REGISTER
+                                      print('inscrire cliqué');
+                                      // Exemple : Navigator.push(...)
+                                    },
+                                ),
+                              ],
                             ),
                           ),
                         ],
