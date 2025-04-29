@@ -22,12 +22,24 @@ class MenuItem {
   factory MenuItem.fromJson(Map<String, dynamic> json) {
     return MenuItem(
       id: json['id'],
-      name: json['title'],
+      name: json['name'],
       description: json['description'],
       price: (json['price'] as num).toDouble(),
-      imgUrl: json['image'],
+      imgUrl: json['imgUrl'],
       category: json['category'],
     );
+  }
+
+
+  Map<String, dynamic> convertToJson() {
+    return {
+      'id' : id,
+      'name' : name,
+      'description' : description,
+      'price' : price,
+      'imgUrl' : imgUrl,
+      'category' : category
+    };
   }
 
 

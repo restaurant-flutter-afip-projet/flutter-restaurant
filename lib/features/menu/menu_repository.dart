@@ -34,31 +34,79 @@ import '../../core/constants/api_links.dart';
 */
 abstract class MenuRepository {
   Future<List<MenuItem>> fetchMenuItems();
+
   Future<String> deleteMenuItems(int id);
-  // Future<MenuItem> updateMenuItem();
-  // Future<MenuItem> createMenuItem();
+
+  Future<MenuItem> updateMenuItem(MenuItem menuItem);
+
+  Future<MenuItem> createMenuItem(MenuItem menuItem);
 }
 
-class MenuRepositoryImpl implements MenuRepository {
 
+class MenuRepositoryImpl implements MenuRepository {
   @override
   Future<List<MenuItem>> fetchMenuItems() async {
-    final String fetchMenuItemsURL = ""
-        "${ApiConstants.baseRequestURL}"
-        "${ApiConstants.menuEndpoint}"
-        "${ApiConstants.getItems}" ;
+    final url = "${ApiConstants.baseRequestURL}${ApiConstants.menuEndpoint}${ApiConstants.getItems}";
 
-    final res = await http.get(Uri.parse(fetchMenuItemsURL));
+    final res = await http.get(Uri.parse(url));
 
-    if (res.statusCode == 200) {
-      final List data = jsonDecode(res.body);
-      return data.map((item) => MenuItem.fromJson(item)).toList();
+    final data = _handleResponse(res) as List;
+
+
+    return data.map((item) => MenuItem.fromJson(item)).toList();
+  }
+
+  @override
+  Future<String> deleteMenuItems(int id) async {
+    final url = "${ApiConstants.baseRequestURL}${ApiConstants.menuEndpoint}${ApiConstants.deleteItem}/$id";
+
+    final res = await http.delete(Uri.parse(url));
+    _handleResponse(res);
+    return SuccessMessages.menuDeleted;
+  }
+
+  @override
+  Future<MenuItem> updateMenuItem(MenuItem menuItem) async {
+    final url = "${ApiConstants.baseRequestURL}${ApiConstants.menuEndpoint}${ApiConstants.updateItem}/${menuItem.id}";
+
+    final res = await http.patch(
+      Uri.parse(url),
+      headers: _headers,
+      body: jsonEncode(menuItem.convertToJson()),
+    );
+
+    final data = _handleResponse(res);
+    return MenuItem.fromJson(data);
+  }
+
+  @override
+  Future<MenuItem> createMenuItem(MenuItem menuItem) async {
+    final url = "${ApiConstants.baseRequestURL}${ApiConstants.menuEndpoint}${ApiConstants.createItem}";
+
+    final res = await http.post(
+      Uri.parse(url),
+      headers: _headers,
+      body: jsonEncode(menuItem.convertToJson()),
+    );
+
+    final data = _handleResponse(res);
+    return MenuItem.fromJson(data);
+  }
+
+  // Méthodes propres à notre classe pour gérer les réponses et obtenir le type
+  dynamic _handleResponse(http.Response res) {
+    if (res.statusCode >= 200 && res.statusCode < 300) {
+      if (res.body.isNotEmpty) {
+        return jsonDecode(res.body);
+      } else {
+        return null;
+      }
     }
 
     switch (res.statusCode) {
       case 401:
         throw ApiException(ErrorMessages.unauthorized, code: 401);
-      case 404 :
+      case 404:
         throw ApiException(ErrorMessages.menuNotFound, code: 404);
       case 500:
         throw ApiException(ErrorMessages.serverError, code: 500);
@@ -67,49 +115,9 @@ class MenuRepositoryImpl implements MenuRepository {
     }
   }
 
-  @override
-  Future<String> deleteMenuItems(int id) async {
-    final String deleteMenuItemUrl =
-        "${ApiConstants.baseRequestURL}"
-        "${ApiConstants.menuEndpoint}"
-        "${ApiConstants.deleteItem}/"
-        "$id";
-
-    final res = await http.delete(Uri.parse(deleteMenuItemUrl));
-
-    if (res.statusCode == 200 || res.statusCode == 204) {
-      return SuccessMessages.menuDeleted;
-    }
-
-    switch (res.statusCode) {
-      case 401:
-        throw ApiException(ErrorMessages.unauthorized, code: 401);
-      case 404 :
-        throw ApiException(ErrorMessages.deleteMenuError, code: 404);
-      case 500:
-        throw ApiException(ErrorMessages.serverError, code: 500);
-      default:
-        throw ApiException(ErrorMessages.genericApi, code: res.statusCode);
-    }
-
-  }
-  //
-  // @override
-  // Future<MenuItem> updateMenuItem() async {
-  // }
-  //
-  // @override
-  // Future<MenuItem> createMenuItem(MenuItem : me) async {
-  //
-  //   final String createMenuItem =
-  //       "${ApiConstants.baseRequestURL}"
-  //       "${ApiConstants.menuEndpoint}"
-  //       "${ApiConstants.deleteItem}/"
-  //       "$id"
-  //
-  //
-  //   final res = await http.post(Uri.parse());
-  //
-  // }
-  //
+  Map<String, String> get _headers => {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'User-Agent': 'CydrerieApp/1.0.0'
+  };
 }
