@@ -26,7 +26,7 @@ class MenuItem {
       name: json['name'],
       description: json['description'],
       price: (json['price'] as num).toDouble(),
-      imgUrl: json['imgUrl'],
+      imgUrl: json['imgUrl'] ,
       category: json['category'],
     );
   }

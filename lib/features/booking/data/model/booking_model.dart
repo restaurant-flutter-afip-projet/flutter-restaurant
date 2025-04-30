@@ -11,5 +11,24 @@ class Booking {
     required this.userId,
     required this.schedule,
     required this.table,
-});
+  });
+
+
+  factory Booking.fromJson(Map<String, dynamic> json) {
+    return Booking(
+        id: json['id'],
+        userId: json['userId'],
+        schedule: json['schedule'],
+        table: json['table'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'capacity': userId,
+      'schedule': schedule,
+      'table': table,
+    };
+  }
 }

@@ -8,4 +8,6 @@ abstract class BookingRepository {
   Future<String> cancelBooking(int id);
 
   Future<Booking> updateBooking(Booking booking);
+
+  Future<Booking> fetchBookingById(int id);
 }

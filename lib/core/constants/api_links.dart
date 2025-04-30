@@ -13,7 +13,7 @@ class ApiConstants {
   static const String menuDetailEndpoint = "/detail";
 
   /* Convention Crud*/
-  static const String getItems = "/fetch-all";
+  static const String getItems = "/fetch";
   static const String deleteItem = "/delete";
   static const String createItem = "/create";
   static const String updateItem = "/update";

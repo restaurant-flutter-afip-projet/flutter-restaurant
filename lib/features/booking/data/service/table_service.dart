@@ -23,6 +23,24 @@ class TableService implements TableRepository {
     return data.map((t) => Table.fromJson(t)).toList();
   }
 
+  @override
+  Future<Table> fetchTableById(int id) async {
+    String url =
+        "${ApiConstants.baseRequestURL}"
+        "${ApiConstants.tableEndpoint}"
+        "${ApiConstants.getItems}/$id";
+
+    try {
+
+      final res = await http.get(Uri.parse(url));
+      final data = _handleResponse(res);
+      return Table.fromJson(data);
+
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
   dynamic _handleResponse(http.Response res) {
     if (res.statusCode >= 200 && res.statusCode < 300) {
       if (res.body.isNotEmpty) {
@@ -36,7 +54,7 @@ class TableService implements TableRepository {
       case 401:
         throw ApiException(ErrorMessages.unauthorized, code: 401);
       case 404:
-        throw ApiException(ErrorMessages.menuNotFound, code: 404);
+        throw ApiException(ErrorMessages.tableNotFound, code: 404);
       case 500:
         throw ApiException(ErrorMessages.serverError, code: 500);
       default:
@@ -47,8 +65,6 @@ class TableService implements TableRepository {
   Map<String, String> get _headers => {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'User-Agent': 'CydrerieApp/1.0.0'
+    'User-Agent': 'CydrerieApp/1.0.0',
   };
 }
-
-
