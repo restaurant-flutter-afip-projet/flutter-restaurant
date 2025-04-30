@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant/screen/home_screen/home_screen.dart';
-import 'screen/menu_screen/menu_screen.dart';
+
+import 'common/screens/landing_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +44,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: _themeMode, // Dynamique !
-      home: HomeScreen(onToggleTheme: _toggleTheme),
+      home: LandingScreen(onToggleTheme: _toggleTheme),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,0 +1,1 @@
+/* Gère l’état d’auth (isLoggedIn, user, token…), appels aux services/service */
