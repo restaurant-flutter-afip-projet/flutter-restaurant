@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../data/model/menu_model.dart';
+import '../screens/menu_detail_screen.dart';
+import '../../data/menu_item_list.dart';
 
 
 
@@ -38,7 +40,20 @@ class MenuItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return GestureDetector(
+      onTap: () {
+        final itemDetail = menuDetails.firstWhere(
+              (element) => element.item.id == item.id,
+          orElse: () => throw Exception('MenuItemDetail not found'),
+        );
+
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => MenuDetailScreen(menuItemDetail: itemDetail, ),
+          ),
+        );
+      },
+      child: Card(
       margin: const EdgeInsets.only(bottom: 16.0),
       elevation: 3.0,
       shape: RoundedRectangleBorder(
@@ -112,6 +127,7 @@ class MenuItemCard extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 }

@@ -82,7 +82,7 @@ class _MenuScreenState extends State<MenuScreen> {
               children: [
                 MenuSection(
                   category: selectedCategory,
-                  items: categoryFiltered,
+                  items: categoryFiltered
                 ),
               ],
             ),
